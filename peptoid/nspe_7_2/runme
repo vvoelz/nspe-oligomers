@@ -1,0 +1,2 @@
+# Use acpype convert the top and crd into gmx file 
+acpype -p nspe_7_2.top -x nspe_7_2.crd
