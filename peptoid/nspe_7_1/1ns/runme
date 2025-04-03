@@ -1,0 +1,1 @@
+mx grompp -f mdp/prod_B.mdp -c npt_sol.gro -p nspe_7_1_sol.top -o prod.tpr
