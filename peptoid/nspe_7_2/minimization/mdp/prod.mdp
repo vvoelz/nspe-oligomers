@@ -1,4 +1,4 @@
-title                   = TC5b prod
+title                   = nspe7mer prod
 ; Run parameters
 integrator              = md        ; leap-frog integrator
 nsteps                  = 1000000   ; 1 * 1000000 = 1000 ps (1 ns)
