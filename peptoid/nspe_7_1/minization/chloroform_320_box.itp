@@ -8,15 +8,15 @@
 
 [ moleculetype ]
 ;name            nrexcl
-UNL  3
+CHL  3
 
 [ atoms ]
 ;   nr  type  resi  res  atom  cgnr     charge      mass       ; qtot   bond_type
-     1   cl     1   UNL    CL    1    -0.114400     35.45000 ; qtot -0.114
-     2   c3     1   UNL     C    2     0.224500     12.01000 ; qtot 0.110
-     3   cl     1   UNL   CL1    3    -0.114400     35.45000 ; qtot -0.004
-     4   cl     1   UNL   CL2    4    -0.114400     35.45000 ; qtot -0.119
-     5   h3     1   UNL     H    5     0.118700      1.00800 ; qtot 0.000
+     1   cl     1   CHL    CL    1    -0.114400     35.45000 ; qtot -0.114
+     2   c3     1   CHL     C    2     0.224500     12.01000 ; qtot 0.110
+     3   cl     1   CHL   CL1    3    -0.114400     35.45000 ; qtot -0.004
+     4   cl     1   CHL   CL2    4    -0.114400     35.45000 ; qtot -0.119
+     5   h3     1   CHL     H    5     0.118700      1.00800 ; qtot 0.000
 
 [ bonds ]
 ;   ai     aj funct   r             k

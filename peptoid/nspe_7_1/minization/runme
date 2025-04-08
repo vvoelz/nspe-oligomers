@@ -12,9 +12,8 @@ mv nspe_7_1_GMX.top nspe_7_1.itp
 
 cat >> nspe_7_1.top  <<EOL
 
-[ defaults ]
-; nbfunc        comb-rule       gen-pairs       fudgeLJ fudgeQQ
-1               2               yes             0.5          0.83333333    
+; Include force field parameters
+#include "/usr/local/gromacs/share/gromacs/top/amber03.ff/forcefield.itp"
 
 ; Include Peptoid
 #include "./nspe_7_1.itp"
@@ -23,18 +22,16 @@ cat >> nspe_7_1.top  <<EOL
 #include "./chloroform_320_box.itp"
 
 ; Include Ion
-;#include "amber03.ff/ions.itp"
+#include "/usr/local/gromacs/share/gromacs/top/amber03.ff/ions.itp"
 
 [ system ]
  nspe_7_1
 
 [ molecules ]
 ; Compound        nmols
- nspe_7_1   
+ nspe_7_1        1
 
 EOL
-
-
 
 
 # Add a box
@@ -46,31 +43,37 @@ cp nspe_7_1.top nspe_7_1_sol.top
 # Solvate the molecule with water
 gmx solvate -cp nspe_7_1_boxed.gro -cs chloroform_320_box.gro -o nspe_7_1_sol.gro -p nspe_7_1_sol.top
 
- Make an index file for our solvated+neutralized  peptoid
-echo "\!4\nname 16 peptoid\nq\n" | gmx make_ndx -f nspe_7_1_sol.gro -o index.ndx 
+# Make an ion top file 
+cp nspe_7_1_sol.top nspe_7_1_ion.top
+
+#Create ion.tpr
+gmx grompp -f mdp/ion.mdp -c nspe_7_1_sol.gro -p nspe_7_1_ion.top -o ion.tpr -maxwarn 1
+
+# Neutralize the molecule
+echo 4 | gmx genion -s ion.tpr -o nspe_7_1_ion.gro -p nspe_7_1_ion.top -pname NA -nname CL -neutral
+
+
+# Make an index file for our solvated+neutralized  peptoid
+echo "\!20&!21\nname 22 peptoid\n!22\nname 23 SOL\nq\n" | gmx make_ndx -f nspe_7_1_ion.gro -o index.ndx  # May need to input one by one 
 echo "q" | gmx make_ndx -n index.ndx 
-#165
+#166
 
 # Prepare a EM.tpr file
-gmx grompp -f mdp/em.mdp -c nspe_7_1_sol.gro -p nspe_7_1_sol.top -n index.ndx -o em_sol.tpr -maxwarn 1
-
+gmx grompp -f mdp/em.mdp -c nspe_7_1_ion.gro -p nspe_7_1_ion.top -n index.ndx -o em_ion.tpr -maxwarn 3
 #Run the EM 
-gmx mdrun -nt 1 -v -s em_sol.tpr -c em_sol.gro -o em_sol.trr
-#Run the EM 
-gmx mdrun -nt 1 -v -s em_sol.tpr -c em_sol.gro -o em_sol.trr
+gmx mdrun -nt 1 -v -s em_ion.tpr -c em_ion.gro -o em_ion.trr
 
 # Prepare a NVT.tpr file
-gmx grompp -f mdp/nvt.mdp -c em_sol.gro -p nspe_7_1_sol.top -n index.ndx -o nvt_sol.tpr -maxwarn 1
+gmx grompp -f mdp/nvt.mdp -c em_ion.gro -p nspe_7_1_ion.top -n index.ndx -o nvt_ion.tpr -maxwarn 1
 #Run the NVT 
-gmx mdrun -nt 1 -v -s nvt_sol.tpr -c nvt_sol.gro -o nvt_sol.trr
+gmx mdrun -nt 1 -v -s nvt_ion.tpr -c nvt_ion.gro -o nvt_ion.trr
 
 # Check the run 
 echo "16\n0\n" |gmx energy -f ener.edr -o temperature.xvg
 
 # Prepare a NPT.tpr file
-gmx grompp -f mdp/npt.mdp -c nvt_sol.gro -p nspe_7_1_sol.top -n index.ndx  -o npt_sol.tpr -maxwarn 1
+gmx grompp -f mdp/npt.mdp -c nvt_ion.gro -p nspe_7_1_ion.top -n index.ndx  -o npt_ion.tpr -maxwarn 1
 #Run the NPT 
-gmx mdrun -nt 1 -v -s npt_sol.tpr -c npt_sol.gro -o npt_sol.trr 
-
+gmx mdrun -nt 1 -v -s npt_ion.tpr -c npt_ion.gro -o npt_ion.trr 
 # Check the run 
 echo "18\n0\n" |gmx energy -f ener.edr -o temperature.xvg
