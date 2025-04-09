@@ -2,7 +2,7 @@
 ;	File 'mdout.mdp' was generated
 ;	By user: root (501)
 ;	On host: Starwings-MacBook-Pro.local
-;	At date: Thu Apr  3 08:45:03 2025
+;	At date: Wed Apr  9 14:02:39 2025
 ;
 ;	Created by:
 ;	                     :-) GROMACS - gmx grompp, 2020.5 (-:
@@ -11,7 +11,7 @@
 ;	Data prefix:  /usr/local/gromacs
 ;	Working dir:  /Users/starwingchen/Voelz_Lab/git/nspe-oligomers/peptoid/nspe_7_2/1ns
 ;	Command line:
-;	  gmx grompp -f prod.mdp -c npt_sol.gro -p nspe_7_2_sol.top -o prod.tpr --maxwarn 1
+;	  gmx grompp -f prod.mdp -c npt_ion.gro -p nspe_7_2_ion.top -o prod.tpr --maxwarn 1
 
 ; VARIOUS PREPROCESSING OPTIONS
 ; Preprocessor information: use cpp syntax.
