@@ -1,1 +1,8 @@
-mx grompp -f mdp/prod_B.mdp -c npt_sol.gro -p nspe_7_1_sol.top -o prod.tpr
+cp ../minization/npt_ion.gro ./
+cp ../minization/nspe_7_1_ion.top ./
+cp ../minization/nspe_7_1.itp ./
+cp ../minization/chloroform_320_box.itp ./
+#cp ../mdp/prod.mdp ./ # if file, check the name
+
+
+gmx grompp -f prod.mdp -c npt_ion.gro -p nspe_7_1_ion.top -o prod.tpr --maxwarn 1
