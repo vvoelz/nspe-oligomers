@@ -1,10 +1,10 @@
-cp ../minization/npt_sol.gro ./
-cp ../minization/nspe_7_2_sol.top ./
-cp ../minization/nspe_7_2.itp ./
-cp ../minization/chloroform_320_box.itp ./
-# cp ../minization/mdp/prod.mdp ./ # if file, check the name
+cp ../minimization/npt_ion.gro ./
+cp ../minimization/nspe_10_ion.top ./
+cp ../minimization/nspe_10.itp ./
+cp ../minimization/chloroform_320_box.itp ./
+# cp ../minimization/mdp/prod.mdp ./ # if file, check the name
 
 
-gmx grompp -f prod.mdp -c npt_sol.gro -p nspe_10_sol.top -o prod.tpr --maxwarn 1
+gmx grompp -f prod.mdp -c npt_ion.gro -p nspe_10_ion.top -o prod.tpr --maxwarn 1
 
 
