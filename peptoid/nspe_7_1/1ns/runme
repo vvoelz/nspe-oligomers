@@ -1,7 +1,7 @@
-cp ../minization/npt_ion.gro ./
-cp ../minization/nspe_7_1_ion.top ./
-cp ../minization/nspe_7_1.itp ./
-cp ../minization/chloroform_320_box.itp ./
+cp ../minimization/npt_ion.gro ./
+cp ../minimization/nspe_7_1_ion.top ./
+cp ../minimization/nspe_7_1.itp ./
+cp ../minimization/chloroform_320_box.itp ./
 #cp ../mdp/prod.mdp ./ # if file, check the name
 
 
