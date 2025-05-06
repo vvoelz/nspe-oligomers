@@ -5,10 +5,10 @@ module load gromacs/2021.2
 module load mpi/openmpi
 
 # Number of alchemical intermediate states
-n=4
+n=8
 
 # Define fep-lambdas values
-fep_lambdas=(0.00 0.20 0.40 0.60)
+fep_lambdas=(0.00  0.10  0.20  0.32  0.46  0.62  0.80  1.0)
 
 # Loop over the states
 for ((i=0; i<n; i++))
