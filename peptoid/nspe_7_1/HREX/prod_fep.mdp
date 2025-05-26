@@ -1,4 +1,4 @@
-title                   = nspe_7_2 HREX/FEP
+title                   = nspe_7_1 HREX/FEP
 
 ; Run parameters
 integrator              = md        ; leap-frog integrator

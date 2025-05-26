@@ -1,7 +1,7 @@
 #!/bin/bash
-#PBS -N nspe_7_2_fep_test.pf
-#PBS -o nspe_7_2_fep_test.out
-#PBS -q medium 
+#PBS -N nspe_7_1_fep_test.pf
+#PBS -o nspe_7_1_fep_test.out
+#PBS -q medium
 #PBS -l nodes=1:ppn=16
 #PBS -l walltime=48:00:00
 #PBS -M tur54445@temple.edu  

@@ -1,4 +1,4 @@
-title                   = nspe_7_2 HREX/FEP
+title                   = nspe_10 HREX/FEP
 
 ; Run parameters
 integrator              = md        ; leap-frog integrator
@@ -65,4 +65,4 @@ separate-dhdl-file       = yes
 dhdl-print-energy        = total
 
 ; lambda-states          = 0     1     2     3     4     5     6     7
-fep-lambdas              = 0.00  0.10  0.20  0.32  0.46  0.62  0.80  1.0 
+fep-lambdas              = 0.00  0.10  0.20  0.32  0.46  0.62  0.80  1.0

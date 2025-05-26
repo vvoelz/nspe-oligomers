@@ -17,19 +17,19 @@ do
   mkdir -p state_${i} && cd state_${i}
 
   # Copy the necessary input files into the directory
-  cp ../nspe_7_2.gro .
-  # mv HREMD.part0001.gro nspe_7_2.gro  ## Uncomment for continuous simulation
-  cp ../nspe_7_2_re.itp .
-  cp ../nspe_7_2.top .
+  cp ../nspe_7_1.gro .
+  # mv HREMD.part0001.gro nspe_7_1.gro  ## Uncomment for continuous simulation
+  cp ../nspe_7_1_re.itp .
+  cp ../nspe_7_1.top .
   cp ../chloroform_320_box.itp .
   cp ../prod_fep.mdp .
   cp ../index.ndx .  
 
   # Check if all required files exist
   required_files=(
-    "nspe_7_2.gro"
-    "nspe_7_2_re.itp"
-    "nspe_7_2.top"
+    "nspe_7_1.gro"
+    "nspe_7_1_re.itp"
+    "nspe_7_1.top"
     "chloroform_320_box.itp"
     "prod_fep.mdp"
     "index.ndx"
@@ -49,7 +49,7 @@ do
   sed -i -e "s/^init-lambda-state[[:space:]]*=.*/init-lambda-state        = ${i}/" prod_fep.mdp
   
   # Run the GROMACS preprocessor
-  gmx grompp -f prod_fep.mdp -c nspe_7_2.gro -p nspe_7_2.top -n index.ndx -o HREMD.tpr -maxwarn 1
+  gmx grompp -f prod_fep.mdp -c nspe_7_1.gro -p nspe_7_1.top -n index.ndx -o HREMD.tpr -maxwarn 1
 
   # Print out the last few lines of the modified prod_fep.mdp file
   echo "Contents of prod_fep.mdp in state_${i}:"
