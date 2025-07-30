@@ -1,9 +1,9 @@
 #!/bin/bash
-#PBS -N nspe_7_2_fep_test.pf
-#PBS -o nspe_7_2_fep_test.out
-#PBS -q medium 
+#PBS -N nspe_7_1_fep_5k.pf
+#PBS -o nspe_7_1_fep_test.out
+#PBS -q medium
 #PBS -l nodes=1:ppn=16
-#PBS -l walltime=48:00:00
+#PBS -l walltime=120:00:00
 #PBS -M tur54445@temple.edu  
 #PBS -m bae
 cd $PBS_O_WORKDIR
@@ -15,7 +15,7 @@ module load gromacs/2021.2
 module load mpi/openmpi
 
 # Define the state directories for the multidir flag
-state_dirs=$(echo state_{0..7} | tr ' ' ' ')
+state_dirs=$(echo state_{0..15} | tr ' ' ' ')
 
 # Run the GROMACS mdrun with MPI
-mpirun -np 8 mdrun_mpi -deffnm HREMD -dhdl dhdl.xvg -replex 5000 -multidir $state_dirs -noappend
+mpirun -np 16 mdrun_mpi -deffnm HREMD -dhdl dhdl.xvg -replex 1000 -multidir $state_dirs -noappend

@@ -1,8 +1,8 @@
-title                   = nspe_7_2 HREX/FEP
+title                   = nspe_7_1 HREX/FEP
 
 ; Run parameters
 integrator              = md        ; leap-frog integrator
-nsteps                  = 500000    ; 1 ns
+nsteps                  = 100000000 ; 200 ns
 dt                      = 0.002     ; 2 fs
 
 ; Output control
@@ -64,5 +64,5 @@ nstdhdl                  = 5000
 separate-dhdl-file       = yes
 dhdl-print-energy        = total
 
-; lambda-states          = 0     1     2     3     4     5     6     7
-fep-lambdas              = 0.00  0.10  0.20  0.32  0.46  0.62  0.80  1.0 
+; lambda-states          = 0     1     2     3     4     5     6     7    8    9    10    11    12   13   14    15  
+fep-lambdas         = 0.00000 0.11657 0.23463 0.34107 0.43883 0.53500 0.61612 0.68120 0.73914 0.79302 0.83985 0.88301 0.92415 0.96051 0.98390 1.00000
