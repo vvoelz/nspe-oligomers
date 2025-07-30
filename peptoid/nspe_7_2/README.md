@@ -16,7 +16,7 @@ This document outlines the complete procedure for setting up and running restrai
 ### 1. 📦 Generate Amber Topology Files
 
 - Run the `runme` script in the current directory.
-- The topology file `nspe_7_1.top` is generated from STEPs residues.
+- The topology file `nspe_7_2.top` is generated from STEPs residues.
 - **ACPYPE** is used to convert the molecular structure into Amber-compatible topology and coordinate files.
 
 ---
