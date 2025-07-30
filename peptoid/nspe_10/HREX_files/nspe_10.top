@@ -4,7 +4,8 @@
 #include "amber03.ff/forcefield.itp"
 
 ; Include Peptoid
-#include "./nspe_10_re.itp"
+;#include "./nspe_10_re.itp"
+#include "./nspe_10_5k_re.itp"
 
 ; Include chloroform model
 #include "./chloroform_320_box.itp"
