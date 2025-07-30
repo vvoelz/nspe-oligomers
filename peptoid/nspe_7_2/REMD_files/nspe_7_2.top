@@ -1,0 +1,23 @@
+; Include force field parameters
+;#include "/usr/local/gromacs/share/gromacs/top/amber03.ff/forcefield.itp"
+#include "amber03.ff/forcefield.itp"
+
+; Include Peptoid
+;#include "./nspe_7_2_re.itp"
+#include "./nspe_7_2_nodistre_yesomegas.itp"
+
+; Include chloroform model
+#include "./chloroform_320_box.itp"
+
+; Include Ion
+;#include "/usr/local/gromacs/share/gromacs/top/amber03.ff/ions.itp"
+#include "amber03.ff/ions.itp"
+
+[ system ]
+nspe_7_2 in water
+
+[ molecules ]
+; Compound        nmols
+ nspe_7_2        1
+CHL         388
+CL               1
