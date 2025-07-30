@@ -5,10 +5,7 @@ module load gromacs/2021.2
 module load mpi/openmpi
 
 # Number of alchemical intermediate states
-n=8
-
-# Define fep-lambdas values
-fep_lambdas=(0.00  0.10  0.20  0.32  0.46  0.62  0.80  1.0)
+n=16
 
 # Loop over the states
 for ((i=0; i<n; i++))
@@ -17,9 +14,9 @@ do
   mkdir -p state_${i} && cd state_${i}
 
   # Copy the necessary input files into the directory
-  cp ../nspe_7_1.gro .
-  # mv HREMD.part0001.gro nspe_7_1.gro  ## Uncomment for continuous simulation
-  cp ../nspe_7_1_re.itp .
+  #cp ../nspe_7_1.gro .
+  mv HREMD.part0001.gro nspe_7_1.gro  ## Uncomment for continuous simulation
+  cp ../nspe_7_1_5k_re.itp .
   cp ../nspe_7_1.top .
   cp ../chloroform_320_box.itp .
   cp ../prod_fep.mdp .
@@ -28,7 +25,7 @@ do
   # Check if all required files exist
   required_files=(
     "nspe_7_1.gro"
-    "nspe_7_1_re.itp"
+    "nspe_7_1_5k_re.itp"
     "nspe_7_1.top"
     "chloroform_320_box.itp"
     "prod_fep.mdp"
