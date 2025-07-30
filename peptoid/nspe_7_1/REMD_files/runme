@@ -1,0 +1,14 @@
+#Prepare Tpr
+#You can change the number of replica in
+#n = ?
+#You can change the minmiun and maximun temperature in 
+#min_temp=300.0
+#max_temp=450.0
+#You can change from start simulation to what has already been down 
+#
+
+chmod +x prepare_tpr_remd.sh
+./prepare_tpr_remd.sh
+
+#Run the job
+qsub remd.qsub
